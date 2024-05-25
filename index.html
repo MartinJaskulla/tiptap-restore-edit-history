@@ -5,8 +5,14 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
+    <style>
+        button { background: red}
+        /*button { background: red !important}*/
+    </style>
   </head>
   <body>
+    <a href="https://google.com">My styles should not be overwritten by library</a>
+    <p>In the worst case fork repo and change class names: https://stackoverflow.com/questions/52165438/change-css-prefixes-in-antd</p>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
