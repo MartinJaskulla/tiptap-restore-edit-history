@@ -1,6 +1,7 @@
 import {EditorProvider, FloatingMenu, BubbleMenu, useCurrentEditor} from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Image from '@tiptap/extension-image'
+import './Tiptap.css'
 
 // define your extension array
 const extensions = [
