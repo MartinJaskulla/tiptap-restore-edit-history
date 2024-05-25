@@ -1,8 +1,10 @@
+import SlButton from '@shoelace-style/shoelace/dist/react/button/index.js';
+
 function App() {
   return (
-      <>
-          Hi
-      </>
+      <SlButton>
+          Click
+      </SlButton>
   )
 }
 
