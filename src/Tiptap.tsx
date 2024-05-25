@@ -1,12 +1,14 @@
 import {EditorProvider, FloatingMenu, BubbleMenu, useCurrentEditor} from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
+import Image from '@tiptap/extension-image'
 
 // define your extension array
 const extensions = [
     StarterKit,
+    Image
 ]
 
-const content = '<p>Hello World!</p>'
+const content = '<p>A</p><p>B</p><p>C</p><img src="https://source.unsplash.com/8xznAGy4HcY/800x400" />'
 
 const Tiptap = () => {
     return (
