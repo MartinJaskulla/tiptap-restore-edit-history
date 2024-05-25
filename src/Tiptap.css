@@ -1,0 +1,18 @@
+/* https://tiptap.dev/docs/editor/api/nodes/image */
+
+.tiptap {
+    border: 1px solid black;
+
+    > * + * {
+        margin-top: 0.75em;
+    }
+
+    img {
+        height: auto;
+        max-width: 100%;
+
+        &.ProseMirror-selectednode {
+            outline: 3px solid #68cef8;
+        }
+    }
+}
