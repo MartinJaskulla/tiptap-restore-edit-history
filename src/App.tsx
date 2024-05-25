@@ -8,6 +8,7 @@ function App() {
 
     return (
         // TODO Scroll down before opening dialog. Menu position is off.
+        // Try portal, try picking an element to render the editor in
         <div style={{height: '120vh'}}>
             <SlDialog open={open} onSlAfterHide={() => setOpen(false)}>
                 <Tiptap/>
