@@ -18,14 +18,19 @@ function App() {
     };
 
     return (
-        <>
-            <Button type="primary" onClick={showModal}>
+        <div style={{height: '120vh'}}>
+            <Button type="primary" onClick={showModal} style={{
+                position: 'fixed',
+                bottom: '20px',
+                left: '50%',
+                transform: 'translateX(-50%)'
+            }}>
                 Open Modal
             </Button>
             <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
                 <Tiptap/>
             </Modal>
-        </>
+        </div>
     )
 }
 
