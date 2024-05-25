@@ -1,9 +1,11 @@
+import Tiptap from "./Tiptap.tsx";
+
 function App() {
-  return (
-      <>
-          Hi
-      </>
-  )
+    return (
+        <>
+            <Tiptap/>
+        </>
+    )
 }
 
 export default App
