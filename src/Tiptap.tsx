@@ -1,8 +1,8 @@
-import {EditorProvider, FloatingMenu, BubbleMenu, useCurrentEditor} from '@tiptap/react'
+import {EditorProvider, FloatingMenu, BubbleMenu, useCurrentEditor, JSONContent} from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Image from '@tiptap/extension-image'
 import './Tiptap.css'
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 // define your extension array
 const extensions = [
@@ -16,18 +16,19 @@ const Tiptap = () => {
     console.log(content)
     return (
         <EditorProvider extensions={extensions} content={content}>
-            <TiptapChild addImg={() => {
+            <TiptapChild content={content} addImg={() => {
                 console.log(2)
                 setContent({
                     "type": "doc",
                     "content": [
                         {
-                            "type": "image",
-                            "attrs": {
-                                "src": "https://source.unsplash.com/8xznAGy4HcY/800x400",
-                                "alt": null,
-                                "title": null
-                            }
+                            "type": "paragraph",
+                            "content": [
+                                {
+                                    "type": "text",
+                                    "text": "asdsadasdsad"
+                                }
+                            ]
                         }
                     ]
                 })
@@ -36,9 +37,14 @@ const Tiptap = () => {
     )
 }
 
-const TiptapChild = (props: {addImg: () => void}) => {
+const TiptapChild = (props: { addImg: () => void, content: JSONContent }) => {
     const {editor} = useCurrentEditor()
-    console.log(editor?.getJSON())
+    console.log(1, editor?.getJSON())
+    console.log(2, props.content)
+
+    useEffect(() => {
+        editor?.chain().focus().setContent(props.content).run()
+    }, [props.content]);
 
     return (
         <>
@@ -47,25 +53,6 @@ const TiptapChild = (props: {addImg: () => void}) => {
             </BubbleMenu>
             <FloatingMenu editor={editor}>
                 <button onClick={props.addImg}>Img</button>
-                <button onClick={() => {
-                    // TODO Test redo/undo saving editor.state again, then try portals
-                    // TODO Undo/redo cannot work like this, because we just set the content.
-                    // TODO Undo/redo actually works, just that editor has to have focus.
-                    // TODO Is this the issue I have in the real project? The focus? No
-                    editor?.chain().setContent({
-                        "type": "doc",
-                        "content": [
-                            {
-                                "type": "image",
-                                "attrs": {
-                                    "src": "https://source.unsplash.com/8xznAGy4HcY/800x400",
-                                    "alt": null,
-                                    "title": null
-                                }
-                            }
-                        ]
-                    }).run()
-                }}>Img2</button>
             </FloatingMenu>
         </>
     )
